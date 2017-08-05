@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Slack Emoji Downloader</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+        <script type="text/javascript" src="./assets/js/main.js" async></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <form>
+                    <div class="form-group">
+                        <label>Token</label>
+                        <input type="text" id="token" class="form-control" placeholder="oauth token">
+                    </div>
+                    <button type="button" id="get_emoji" class="btn btn-default">Get Emoji</button>
+                </form> 
+            </div>
+
+            <div id="table" class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="img in images">
+                            <td>{{img.name}}</td>
+                            <td><img :src="img.url" :alt="img.name" /></td>
+                            <td><a class="btn btn-default" :href="img.url">Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
